@@ -8,14 +8,15 @@ spec:
     apiVersion: apps/v1
     kind: Deployment
     name: nginx
-  progressDeadlineSeconds: 60
   service:
     port: 80
+    targetPort: 80
+    name: nginx
   analysis:
     interval: 30s
-    threshold: 1
-    maxWeight: 0
-    stepWeight: 0
+    threshold: 3
+    maxWeight: 100
+    stepWeight: 100
     metrics:
       - name: request-success-rate
         interval: 1m
@@ -23,4 +24,4 @@ spec:
           min: 99
         templateRef:
           name: success-rate
-          namespace: flagger-system
+          namespace: flagger
