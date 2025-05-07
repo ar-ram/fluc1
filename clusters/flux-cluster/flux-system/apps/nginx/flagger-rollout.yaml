@@ -14,7 +14,7 @@ spec:
   analysis:
     interval: 1m
     threshold: 5
-    rollbackOnFailure: true
+    
     metrics:
     - name: request-success-rate
       thresholdRange:
